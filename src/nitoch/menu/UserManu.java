@@ -41,13 +41,13 @@ public class UserManu extends Menu {
 			PrintUserInfo();
 			break;
 		case 2:
-			ChangeUserName(newInfo);
+			ChangeName(newInfo);
 			break;
 		case 3:
 			ChangeUserFamilyName(newInfo);
 			break;
 		case 4:
-			ChangeUserUserName(newInfo);
+			ChangeUserName(newInfo);
 			break;
 		case 5:
 			ChangeId(newInfo);
@@ -68,22 +68,25 @@ public class UserManu extends Menu {
 			// output = stmt.executeQuery(SQlCommand);
 			ResultSet rs = stmt.executeQuery(SQlCommand);
 			while (rs.next()) {
-				System.out.println(rs.getString("Name") + "\t" + rs.getString("FamilyName") + "\t" + rs.getInt("ID") +"\t" +rs.getString("UserName") + "\t"+rs.getString("PassWord"));
+				System.out.println(rs.getString("Name") + "\t" + rs.getString("FamilyName") + "\t" + rs.getInt("ID")
+						+ "\t" + rs.getString("UserName") + "\t" + rs.getString("PassWord"));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	private void ChangeUserName(String NewName) {
-
+	private void ChangeName(String NewName) {
+		SQLConnection sql = new SQLConnection();
+		String SqlCommand = "update users set Name = '" + NewName + "' where UserName ='" + UserName + "';";
+		sql.sendCommand(SqlCommand);
 	}
 
 	private void ChangeUserFamilyName(String NewUserName) {
 
 	}
 
-	private void ChangeUserUserName(String NewUserName) {
+	private void ChangeUserName(String NewUserName) {
 
 	}
 

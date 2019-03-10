@@ -1,4 +1,4 @@
-package nitoch.menu;
+pasckage nitoch.menu;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

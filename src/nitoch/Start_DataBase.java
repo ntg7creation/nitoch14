@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import nitoch.sql.SQLConnection;
 
-public class testclass {
+public class Start_DataBase {
 
     public static void createNewDatabase(String fileName) {
     	 
@@ -67,9 +67,16 @@ public class testclass {
 				+ ");";	
 
 		temp.sendCommand(sqlCommand);
-		 sqlCommand ="insert into Users(Name,FamilyName,ID,UserName,PassWord)"
+		 sqlCommand =
+		 		"insert into Users(Name,FamilyName,ID,UserName,PassWord)"
 		 		+ "VALUES"
-		 		+ "('Natai','Ella',208,'ntg','gg');";
+		 		+ "('Natai','Ella',208,'ntg','gg'),"
+		 		+ "('adafds','vcx',2323,'fvd','feww'),"
+		 		+ "('faew','bfggd',11,'ews','vcdd'),"
+		 		+ "('fewq','dgt',543,'bgh','asdf'),"
+		 		+ "('fdsafewv','f',543,'btrr','ujhb'),"
+		 		+ "('cds','zxc',2345,'jhgfd','asdfg')"
+		 		+ ";";
 
 			temp.sendCommand(sqlCommand);
 
