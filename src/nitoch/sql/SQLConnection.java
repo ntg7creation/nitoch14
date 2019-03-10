@@ -23,7 +23,7 @@ public class SQLConnection {
 		}
 		return output;
 	}
-
+//test
 	public void sendCommand(String SQlCommand) {
 		try (Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
 			stmt.execute(SQlCommand);
