@@ -1,7 +1,9 @@
 package nitoch.menu;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -50,17 +52,16 @@ public class MasterMenu extends Menu {
 	private void PrintUserInfo(String user) {
 		SQLConnection sql = new SQLConnection();
 		String SQlCommand = "SELECT * from Users where UserName = '" + user + "';";
-		ResultSet rs = sql.sendCommandwithReturn(SQlCommand);
-//		try {
-//
-//			// loop through the result set
-//			while (rs.next()) {
-//				System.out.println(rs.getString(0) + "\t" + rs.getString(1) + "\t" + rs.getInt(2) + "\t"
-//						+ rs.getString(3) + "\t" + rs.getString(4));
-//			}
-//		} catch (SQLException e) {
-//			System.out.println(e.getMessage());
-//		}
+
+		try (Connection conn = sql.connect(); Statement stmt = conn.createStatement();) {
+			// output = stmt.executeQuery(SQlCommand);
+			ResultSet rs = stmt.executeQuery(SQlCommand);
+			while (rs.next()) {
+				System.out.println(rs.getString("Name") + "\t" + rs.getString("FamilyName") + "\t" + rs.getInt("ID") +"\t" +rs.getString("UserName") + "\t"+rs.getString("PassWord"));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private void ChangeUserInfo(String user) {

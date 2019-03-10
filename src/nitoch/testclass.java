@@ -64,7 +64,7 @@ public class testclass {
 				+ "UserName Varchar Primary key,"
 				+ "PassWord Varchar, "
 				+ "FOREIGN KEY (UserName) REFERENCES MastersUser (MasterUserName) ON DELETE CASCADE ON UPDATE CASCADE "
-				+ ");";
+				+ ");";	
 
 		temp.sendCommand(sqlCommand);
 		 sqlCommand ="insert into Users(Name,FamilyName,ID,UserName,PassWord)"

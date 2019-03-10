@@ -10,6 +10,7 @@ public class SQLConnection {
 
 	private static String url = "jdbc:sqlite:src\\data\\newdatabase.db";
 
+	//this funtion will return null dont use it
 	public ResultSet sendCommandwithReturn(String SQlCommand) {
 		ResultSet output = null;
 		try (Connection conn = this.connect(); Statement stmt = conn.createStatement();) {
@@ -32,7 +33,7 @@ public class SQLConnection {
 		}
 	}
 
-	private Connection connect() {
+	public Connection connect() {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(url);
