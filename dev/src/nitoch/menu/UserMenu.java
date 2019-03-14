@@ -82,12 +82,16 @@ public class UserMenu extends Menu {
 		SQLConnection sql = new SQLConnection();
 		String SqlCommand = "update users set Name = '" + NewName + "' where UserName ='" + UserName + "';";
 		sql.sendCommand(SqlCommand);
+		System.out.println(UserName+" you have successfully changed your name to "+NewName);
+		UserName = NewName;
 	}
 
 	private void ChangeUserFamilyName(String NewUserName) {
 		SQLConnection sql = new SQLConnection();
 		String SqlCommand = "update users set FamilyName = '" + NewUserName + "' where UserName ='" + UserName + "';";
 		sql.sendCommand(SqlCommand);
+		System.out.println(UserName+" you have successfully changed your  family name to "+NewUserName);
+		
 	}
 
 
@@ -97,11 +101,13 @@ public class UserMenu extends Menu {
 
 		String SqlCommand = "update users set ID = '" + id + "' where UserName ='" + UserName + "';";
 		sql.sendCommand(SqlCommand);
+		System.out.println(UserName+" you have successfully changed your  ID to "+ID);
 	}
 
 	private void ChangePassword(String NewPassword) {
 		SQLConnection sql = new SQLConnection();
 		String SqlCommand = "update users set PassWord = '" + NewPassword + "' where UserName ='" + UserName + "';";
 		sql.sendCommand(SqlCommand);
+		System.out.println(UserName+" you have successfully changed your password to "+NewPassword);
 	}
 }
