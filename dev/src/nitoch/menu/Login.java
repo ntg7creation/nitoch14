@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class Login {
 
 	public static void main(String[] args) {
-
+		//test
 		Menu myMenu = null;
 		Scanner input1 = new Scanner(System.in);
 		while (myMenu == null)
