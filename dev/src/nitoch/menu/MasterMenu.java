@@ -101,6 +101,7 @@ public class MasterMenu extends Menu {
 		SQLConnection sql = new SQLConnection();
 		String SqlCommand = "delete from users where UserName = '" + user + "';";
 		sql.sendCommand(SqlCommand);
+		System.out.println(username+" you have successfully removed"+ user +"from DB");
 	}
 
 }
