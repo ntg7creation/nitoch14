@@ -39,7 +39,6 @@ public class MasterMenu extends Menu {
 					action = -1;
 				}
 			}
-			System.out.println("");
 //testing amir push
 			switch (action) {
 			case 1:
