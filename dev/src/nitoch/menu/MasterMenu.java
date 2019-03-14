@@ -82,19 +82,39 @@ public class MasterMenu extends Menu {
 	private void ChangeUserInfo(String user) {
 		System.out.println(
 				"Please insert all users info including the changed fields, note: cannot change user's username");
-		System.out.println("Insert in this order: First name, Family Name, ID (with spaces in between each field)");
+		System.out.println("Insert in this order: First name, Family Name, ID, password (with spaces in between each field)");
 		Scanner myObj = new Scanner(System.in);
 		String userInput = myObj.nextLine();
 		String[] info = userInput.split(" ");
 		SQLConnection sql = new SQLConnection();
 		String SqlCommand = "update users set Name = '" + info[0] + "', FamilyName = '" + info[1] + "', ID = "
-				+ Integer.parseInt(info[2]) + " where UserName ='" + user + "';";
+				+ Integer.parseInt(info[2]) +",PassWord = '"+ info[3]+"' where UserName ='" + user + "';";
 		System.out.println(SqlCommand);
 		sql.sendCommand(SqlCommand);
 	}
 
 	private void AddUser() {
-	
+		System.out.println(
+				"Please enter first name, family name, ID number, UserName and Password \n Enter in this order with spaces in between each field \n");
+		Scanner myObj = new Scanner(System.in);
+		String user = myObj.nextLine();
+		String[] info = user.split(" ");
+		SQLConnection sql = new SQLConnection();
+		String SQlCommand = "SELECT * from Users where UserName = '" + info[3] + "';";
+		try (Connection conn = sql.connect(); Statement stmt = conn.createStatement();) {
+			// output = stmt.executeQuery(SQlCommand);
+			ResultSet rs = stmt.executeQuery(SQlCommand);
+			if (!rs.next()) {
+				String sqlCommand = "insert into Users(Name,FamilyName,ID,UserName,PassWord)" + "VALUES" + info[0] + ","
+						+ info[1] + "," + Integer.parseInt(info[2]) + "," + info[3] + "," + info[4] + "," + ";";
+				sql.sendCommand(sqlCommand);
+			} else {
+				System.out.println("UserName is already in use please choose new name");
+				AddUser();
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private void RemoveUser(String user) {
