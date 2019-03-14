@@ -9,51 +9,56 @@ import java.util.Scanner;
 
 import nitoch.sql.SQLConnection;
 
-public class UserManu extends Menu {
+public class UserMenu extends Menu {
 
 	String UserName = null;
 
-	public UserManu(String userName) {
+	public UserMenu(String userName) {
 		UserName = userName;
 	}
 
 	@Override
 	public void run() {
 		Scanner MyScanner = new Scanner(System.in);
-		System.out.println(
-				"enter you requset:\n1. Get Myinfo \n2. Change name <New Name>\n3. Change FamilyName <New FamilyName>\n4. Change Id <new ID>\n5. Change PassWord <new PassWord>");
-		int action = -1;
-		String newInfo = "";
-		while (action == -1) {
-			String input = MyScanner.nextLine();
-			try (Scanner temp = new Scanner(input)) {
-				action = temp.nextInt();
-				if (action != 1)
-					newInfo = temp.next();
-			} catch (NoSuchElementException e) {
-				System.out.println("ples enter correct input ex- 2 dani");
-				action = -1;
+		while (true) {
+			System.out.println(
+					"enter you requset:\n1. Get my info \n2. Update name <Name>\n3. Update FamilyName <FamilyName>\n4. Update ID <ID>\n5. Update PassWord <PassWord>\n6. Quit");
+			int action = -1;
+			String newInfo = "";
+			while (action == -1) {
+				String input = MyScanner.nextLine();
+				try (Scanner temp = new Scanner(input)) {
+					action = temp.nextInt();
+					if (action != 1 && action != 6)
+						newInfo = temp.next();
+				} catch (NoSuchElementException e) {
+					System.out.println("ples enter correct input ex- 2 dani");
+					action = -1;
+				}
 			}
-		}
 
-		switch (action) {
-		case 1:
-			PrintUserInfo();
-			break;
-		case 2:
-			ChangeName(newInfo);
-			break;
-		case 3:
-			ChangeUserFamilyName(newInfo);
-			break;
-		case 4:
-			ChangeId(newInfo);
-			break;
-		case 5:
-			ChangePassword(newInfo);
-			break;
-		default:
-			break;
+			switch (action) {
+			case 1:
+				PrintUserInfo();
+				break;
+			case 2:
+				ChangeName(newInfo);
+				break;
+			case 3:
+				ChangeUserFamilyName(newInfo);
+				break;
+			case 4:
+				ChangeId(newInfo);
+				break;
+			case 5:
+				ChangePassword(newInfo);
+				break;
+			case 6:
+				System.exit(0);
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -92,7 +97,7 @@ public class UserManu extends Menu {
 	private void ChangeId(String ID) {
 		SQLConnection sql = new SQLConnection();
 		int id = Integer.parseInt(ID);
-		
+
 		String SqlCommand = "update users set ID = '" + id + "' where UserName ='" + UserName + "';";
 		sql.sendCommand(SqlCommand);
 	}

@@ -1,7 +1,7 @@
 package nitoch;
 
 import nitoch.menu.MasterMenu;
-import nitoch.menu.UserManu;
+import nitoch.menu.UserMenu;
 
 public class programeStart {
 
@@ -9,7 +9,7 @@ public class programeStart {
 	{
 		//MasterMenu Mm = new MasterMenu();
 		//Mm.run();
-		UserManu UM = new UserManu("ntg");
+		UserMenu UM = new UserMenu("ntg");
 		UM.run();
 		//chang
 	}

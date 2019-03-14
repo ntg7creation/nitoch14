@@ -21,39 +21,45 @@ public class MasterMenu extends Menu {
 	public void run() {
 		Scanner MyScanner = new Scanner(System.in);
 		Scanner temp;
-		System.out.println(
-				"enter you requset:\n1. Get info on <user>\n2. Change into on <user>\n3. Add user\n4. remove user <user>");
-		int action = -1;
-		String name = "";
-		while (action == -1) {
-			String input = MyScanner.nextLine();
+		while (true) {
+			System.out.println(
+					"enter you requset:\n1. Get info on <user>\n2. Update user info <user>\n3. Add user\n4. remove user <user>\n5. Quit");
+			int action = -1;
+			String name = "";
+			while (action == -1) {
+				String input = MyScanner.nextLine();
 
-			try {
-				temp = new Scanner(input);
-				action = temp.nextInt();
-				if (action != 3)
-					name = temp.next();
-			} catch (NoSuchElementException e) {
-				System.out.println("ples enter correct input ex- 2 dani");
-				action = -1;
+				try {
+					temp = new Scanner(input);
+					action = temp.nextInt();
+					if (action != 3 && action != 5)
+						name = temp.next();
+				} catch (NoSuchElementException e) {
+					System.out.println("ples enter correct input ex- 2 dani");
+					action = -1;
+				}
 			}
-		}
 
-		switch (action) {
-		case 1:
-			PrintUserInfo(name);
-			break;
-		case 2:
-			ChangeUserInfo(name);
-			break;
-		case 3:
-			AddUser();
-			break;
-		case 4:
-			RemoveUser(name);
-			break;
-		default:
-			break;
+			switch (action) {
+			case 1:
+				PrintUserInfo(name);
+				break;
+			case 2:
+				ChangeUserInfo(name);
+				break;
+			case 3:
+				AddUser();
+				break;
+			case 4:
+				RemoveUser(name);
+				break;
+			case 5:
+				System.exit(0);
+				break;
+
+			default:
+				break;
+			}
 		}
 	}
 
@@ -74,7 +80,17 @@ public class MasterMenu extends Menu {
 	}
 
 	private void ChangeUserInfo(String user) {
-
+		System.out.println(
+				"Please insert all users info including the changed fields, note: cannot change user's username");
+		System.out.println("Insert in this order: First name, Family Name, ID (with spaces in between each field)");
+		Scanner myObj = new Scanner(System.in);
+		String userInput = myObj.nextLine();
+		String[] info = userInput.split(" ");
+		SQLConnection sql = new SQLConnection();
+		String SqlCommand = "update users set Name = '" + info[0] + "', FamilyName = '" + info[1] + "', ID = "
+				+ Integer.parseInt(info[2]) + " where UserName ='" + user + "';";
+		System.out.println(SqlCommand);
+		sql.sendCommand(SqlCommand);
 	}
 
 	private void AddUser() {
@@ -82,6 +98,9 @@ public class MasterMenu extends Menu {
 	}
 
 	private void RemoveUser(String user) {
-
+		SQLConnection sql = new SQLConnection();
+		String SqlCommand = "delete from users where UserName = '" + user + "';";
+		sql.sendCommand(SqlCommand);
 	}
+
 }

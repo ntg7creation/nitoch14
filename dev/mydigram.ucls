@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="nitoch.menu.UserManu" project="dev" file="/dev/src/nitoch/menu/UserManu.java" 
+  <class id="4" language="java" name="nitoch.menu.UserMenu" project="dev" file="/dev/src/nitoch/menu/UserMenu.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="313" y="393"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -56,11 +56,11 @@
     </display>  
   </class>  
   <generalization id="7">    
-    <end type="SOURCE" refId="4"/>    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
   <generalization id="8">    
-    <end type="SOURCE" refId="3"/>    
+    <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

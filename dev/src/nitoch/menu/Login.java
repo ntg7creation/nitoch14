@@ -46,7 +46,7 @@ public class Login {
 						}
 						if (!isMaster) {
 							System.out.println("you have successfully connected");
-							myMenu = new UserManu(username);
+							myMenu = new UserMenu(username);
 						}
 					} else {
 						System.out.println("Password or username are incorrect");
