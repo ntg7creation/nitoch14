@@ -64,9 +64,7 @@ public class Start_DataBase {
 		temp.sendCommand(sqlCommand);
 		
 		sqlCommand = "insert into Users(Name,FamilyName,ID,UserName,PassWord)" + "VALUES"
-				+ "('Natai','Ella',208,'ntg','gg')," + "('adafds','vcx',2323,'master','mastercode'),"
-				+ "('faew','bfggd',11,'ews','vcdd')," + "('fewq','dgt',543,'bgh','asdf'),"
-				+ "('fdsafewv','f',543,'btrr','ujhb')," + "('cds','zxc',2345,'jhgfd','asdfg')" + ";";
+				+ "('yarin','vcx',2323,'master','mastercode');";
 
 		temp.sendCommand(sqlCommand);
 
