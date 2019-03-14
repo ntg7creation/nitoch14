@@ -21,7 +21,7 @@ public class UserManu extends Menu {
 	public void run() {
 		Scanner MyScanner = new Scanner(System.in);
 		System.out.println(
-				"enter you requset:\n1. Get Myinfo \n2. Change name <New Name>\n3. Change FamilyName <New FamilyName>\n4. Change Id <new ID>\n5. Change UserName <New UserName>\n6. Change PassWord <new PassWord>");
+				"enter you requset:\n1. Get Myinfo \n2. Change name <New Name>\n3. Change FamilyName <New FamilyName>\n4. Change Id <new ID>\n5. Change PassWord <new PassWord>");
 		int action = -1;
 		String newInfo = "";
 		while (action == -1) {
@@ -47,12 +47,9 @@ public class UserManu extends Menu {
 			ChangeUserFamilyName(newInfo);
 			break;
 		case 4:
-			ChangeUserName(newInfo);
-			break;
-		case 5:
 			ChangeId(newInfo);
 			break;
-		case 6:
+		case 5:
 			ChangePassword(newInfo);
 			break;
 		default:
@@ -83,7 +80,9 @@ public class UserManu extends Menu {
 	}
 
 	private void ChangeUserFamilyName(String NewUserName) {
-
+		SQLConnection sql = new SQLConnection();
+		String SqlCommand = "update users set FamilyName = '" + NewUserName + "' where UserName ='" + UserName + "';";
+		sql.sendCommand(SqlCommand);
 	}
 
 	private void ChangeUserName(String NewUserName) {
@@ -91,10 +90,16 @@ public class UserManu extends Menu {
 	}
 
 	private void ChangeId(String ID) {
-
+		SQLConnection sql = new SQLConnection();
+		int id = Integer.parseInt(ID);
+		
+		String SqlCommand = "update users set ID = '" + id + "' where UserName ='" + UserName + "';";
+		sql.sendCommand(SqlCommand);
 	}
 
 	private void ChangePassword(String NewPassword) {
-
+		SQLConnection sql = new SQLConnection();
+		String SqlCommand = "update users set PassWord = '" + NewPassword + "' where UserName ='" + UserName + "';";
+		sql.sendCommand(SqlCommand);
 	}
 }

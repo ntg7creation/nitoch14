@@ -11,16 +11,25 @@ import nitoch.sql.SQLConnection;
 
 public class MasterMenu extends Menu {
 
+	private String username;
+
+	public MasterMenu(String username) {
+		this.username = username;
+	}
+
 	@Override
 	public void run() {
 		Scanner MyScanner = new Scanner(System.in);
+		Scanner temp;
 		System.out.println(
 				"enter you requset:\n1. Get info on <user>\n2. Change into on <user>\n3. Add user\n4. remove user <user>");
 		int action = -1;
 		String name = "";
 		while (action == -1) {
 			String input = MyScanner.nextLine();
-			try (Scanner temp = new Scanner(input)) {
+
+			try {
+				temp = new Scanner(input);
 				action = temp.nextInt();
 				if (action != 3)
 					name = temp.next();
@@ -56,7 +65,8 @@ public class MasterMenu extends Menu {
 			// output = stmt.executeQuery(SQlCommand);
 			ResultSet rs = stmt.executeQuery(SQlCommand);
 			while (rs.next()) {
-				System.out.println(rs.getString("Name") + "\t" + rs.getString("FamilyName") + "\t" + rs.getInt("ID") +"\t" +rs.getString("UserName") + "\t"+rs.getString("PassWord"));
+				System.out.println(rs.getString("Name") + "\t" + rs.getString("FamilyName") + "\t" + rs.getInt("ID")
+						+ "\t" + rs.getString("UserName") + "\t" + rs.getString("PassWord"));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
