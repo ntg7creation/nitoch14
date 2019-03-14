@@ -35,7 +35,7 @@ public class MasterMenu extends Menu {
 					if (action != 3 && action != 5)
 						name = temp.next();
 				} catch (NoSuchElementException e) {
-					System.out.println("ples enter correct input ex- 2 dani");
+					System.out.println("please enter correct input. for example- 2 dani");
 					action = -1;
 				}
 			}
@@ -111,7 +111,6 @@ public class MasterMenu extends Menu {
 				String sqlCommand = "insert into Users(Name,FamilyName,ID,UserName,PassWord)" + "VALUES ('" + info[0]
 						+ "','" + info[1] + "'," + Integer.parseInt(info[2]) + ",'" + info[3] + "','" + info[4] + "')"
 						+ ";";
-				System.out.println(sqlCommand);
 				sql.sendCommand(sqlCommand);
 			} else {
 				System.out.println("UserName is already in use please choose new name");

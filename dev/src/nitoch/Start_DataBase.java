@@ -53,30 +53,23 @@ public class Start_DataBase {
 		// connect();
 		SQLConnection temp = new SQLConnection();
 
-		String sqlCommand = "CREATE TABLE IF NOT EXISTS MastersUser(" + "MasterUserName Varchar);";
-		temp.sendCommand(sqlCommand);
+		String sqlCommand = "";
 
-		sqlCommand = "delete from users;";
-		temp.sendCommand(sqlCommand);
+
 		sqlCommand = "CREATE TABLE IF NOT EXISTS Users(" + "Name Varchar," + "FamilyName Varchar," + "ID Int,"
-				+ "UserName Varchar Primary key," + "PassWord Varchar, "
-				+ "FOREIGN KEY (UserName) REFERENCES MastersUser (MasterUserName) ON DELETE CASCADE ON UPDATE CASCADE "
-				+ ");";
+				+ "UserName Varchar Primary key," + "PassWord Varchar" + ");";
 		temp.sendCommand(sqlCommand);
 
+		sqlCommand = "delete from Users;";
+		temp.sendCommand(sqlCommand);
+		
 		sqlCommand = "insert into Users(Name,FamilyName,ID,UserName,PassWord)" + "VALUES"
-				+ "('Natai','Ella',208,'ntg','gg')," + "('adafds','vcx',2323,'fvd','feww'),"
+				+ "('Natai','Ella',208,'ntg','gg')," + "('adafds','vcx',2323,'master','mastercode'),"
 				+ "('faew','bfggd',11,'ews','vcdd')," + "('fewq','dgt',543,'bgh','asdf'),"
 				+ "('fdsafewv','f',543,'btrr','ujhb')," + "('cds','zxc',2345,'jhgfd','asdfg')" + ";";
 
 		temp.sendCommand(sqlCommand);
 
-		sqlCommand = "delete from MastersUser;";
-		temp.sendCommand(sqlCommand);
-		sqlCommand = "insert into MastersUser(MasterUserName)" + "VALUES"
-				+ "('ntg');";
-				
-		temp.sendCommand(sqlCommand);
 
 	}
 

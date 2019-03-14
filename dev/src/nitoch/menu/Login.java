@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class Login {
 
 	public static void main(String[] args) {
-		//test
+		// test
 		Menu myMenu = null;
 		Scanner input1 = new Scanner(System.in);
 		while (myMenu == null)
@@ -29,20 +29,10 @@ public class Login {
 					pst.setString(2, password);
 					ResultSet rs = pst.executeQuery();
 					if (rs.next()) {
-						try {
-
-							String sql2 = "Select * from MastersUser where MasterUserName=?";
-							PreparedStatement pst2 = con.prepareStatement(sql2);
-							pst2.setString(1, username);
-							ResultSet rs2 = pst2.executeQuery();
-
-							if (rs2.next()) {
-								System.out.println("you have successfully connected as a master");
-								myMenu = new MasterMenu(username);
-								isMaster = true;
-							}
-						} catch (SQLException e) {
-							e.printStackTrace();
+						if (username == "master") {
+							System.out.println("you have successfully connected as a master");
+							myMenu = new MasterMenu(username);
+							isMaster = true;
 						}
 						if (!isMaster) {
 							System.out.println("you have successfully connected");

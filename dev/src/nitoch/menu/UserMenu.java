@@ -32,7 +32,7 @@ public class UserMenu extends Menu {
 					if (action != 1 && action != 6)
 						newInfo = temp.next();
 				} catch (NoSuchElementException e) {
-					System.out.println("ples enter correct input ex- 2 dani");
+					System.out.println("please enter correct input. for example- 2 dani");
 					action = -1;
 				}
 			}
