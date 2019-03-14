@@ -94,7 +94,7 @@ public class MasterMenu extends Menu {
 	}
 
 	private void AddUser() {
-
+	
 	}
 
 	private void RemoveUser(String user) {

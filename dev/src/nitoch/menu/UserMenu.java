@@ -90,9 +90,6 @@ public class UserMenu extends Menu {
 		sql.sendCommand(SqlCommand);
 	}
 
-	private void ChangeUserName(String NewUserName) {
-
-	}
 
 	private void ChangeId(String ID) {
 		SQLConnection sql = new SQLConnection();
