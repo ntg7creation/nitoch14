@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import nitoch.sql.SQLConnection;
+import nitoch.structures.DataRows;
 
 public class UserManu extends Menu {
 
@@ -60,14 +61,21 @@ public class UserManu extends Menu {
 	private void PrintUserInfo() {
 		SQLConnection sql = new SQLConnection();
 		String SQlCommand = "SELECT * from Users where UserName = '" + UserName + "';";
-
+		DataRows drs = sql.sendCommandwithReturn(SQlCommand);
+		
 		try (Connection conn = sql.connect(); Statement stmt = conn.createStatement();) {
 			// output = stmt.executeQuery(SQlCommand);
-			ResultSet rs = stmt.executeQuery(SQlCommand);
+			//ResultSet rs = stmt.executeQuery(SQlCommand);
+			//drs=new DataRows(rs);
+			/*
 			while (rs.next()) {
-				System.out.println(rs.getString("Name") + "\t" + rs.getString("FamilyName") + "\t" + rs.getInt("ID")
-						+ "\t" + rs.getString("UserName") + "\t" + rs.getString("PassWord"));
+				System.out.println(rs.getString("Name") + "\t" + rs.getString("FamilyName") + "\t" + rs.getInt("ID") + "\t" + rs.getString("UserName") + "\t" + rs.getString("PassWord"));
 			}
+*/
+			while (drs.next()) {
+				System.out.println(drs.getString("Name") + "\t" + drs.getString("FamilyName") + "\t" + drs.getInt("ID") + "\t" + drs.getString("UserName") + "\t" + drs.getString("PassWord"));
+			}
+			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}

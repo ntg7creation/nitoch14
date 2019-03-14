@@ -62,6 +62,7 @@ public class DataRows {
 		DataRows drs = new DataRows(lst2,cols);
 		return drs;
 	}
+	//use this function any time you return DataRows instance from a function or after iterate it.
 	public void resetIterator() {
 		iter=-1;
 	}
