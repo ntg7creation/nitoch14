@@ -123,5 +123,5 @@ public class MasterMenu extends Menu {
 		sql.sendCommand(SqlCommand);
 		System.out.println(username+" you have successfully removed"+ user +"from DB");
 	}
-
+//fds
 }
